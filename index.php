@@ -6,7 +6,7 @@
     echo "<ul>";
     foreach ($menu as $item) {
       echo "<li$style>";
-      echo "<a href='$item[href]'>
+      echo "<a href='{$item["href"]}'>
       {$item['link']}</a>";
       echo "</li>";
     }
