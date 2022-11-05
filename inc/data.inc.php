@@ -28,22 +28,24 @@
   //Инициализация заголовков страницы
   $title = 'Сайт нашей школы';
   $header = "$welcome, Гость!";
-  $id = strtolower(strip_tags(trim($_GET['id'])));
-  switch($id){
-    case 'about':
-      $title = 'О сайте';
-      $header ='О нашем сайте';
-      break;
-    case 'contact': 
-      $title = 'Контакты';
-      $header ='Обратная связь';
-      break;
-    case 'table': 
-      $title = 'Таблица умножения';
-      $header ='Таблица усножения';
-      break;
-    case 'calc':
-      $title = 'Он-лайн калькулятор';
-      $header ='Калькулятор';
-      break;
+  if (isset($_GET['id'])) {
+    $id = strtolower(strip_tags(trim($_GET['id'])));
+    switch($id){
+      case 'about':
+        $title = 'О сайте';
+        $header ='О нашем сайте';
+        break;
+      case 'contact': 
+        $title = 'Контакты';
+        $header ='Обратная связь';
+        break;
+      case 'table': 
+        $title = 'Таблица умножения';
+        $header ='Таблица усножения';
+        break;
+      case 'calc':
+        $title = 'Он-лайн калькулятор';
+        $header ='Калькулятор';
+        break;
+    }
   }

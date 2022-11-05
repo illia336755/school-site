@@ -1,7 +1,6 @@
 <?php
   require "inc/lib.inc.php";
   require "inc/data.inc.php";
-  include "inc/menu.inc.php";
 ?>
 
 <!DOCTYPE html>
@@ -46,14 +45,9 @@
     <!-- Область основного контента -->
   </div>
   <div id="nav">
-    <!-- Навигация -->
-    
-    <!-- Меню -->
     <?php
-    drawMenu($leftMenu);
+      include "inc/menu.inc.php";
     ?>
-    <!-- Меню -->
-    <!-- Навигация -->
   </div>
   <div id="footer">
     <!-- Нижняя часть страницы -->
