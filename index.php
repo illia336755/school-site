@@ -1,51 +1,14 @@
 <?php
-  function drawMenu($menu, $vertical=true) {
-    $style = "";
-    if(!$vertical)
-      $style = " style='display:inline;margin-right:15px'";
-    echo "<ul>";
-    foreach ($menu as $item) {
-      echo "<li$style>";
-      echo "<a href='{$item["href"]}'>
-      {$item['link']}</a>";
-      echo "</li>";
-    }
-    echo "</ul>";
-  }
-
-  //Установка локали и выбор значений даты
-  setlocale(LC_ALL, "ukrainian");
-  $day = strftime('%d');
-  $mon = strftime('%B');
-  $year = strftime('%Y');
-
-//
-  $hour = (int)strftime('%H');
-  $welcome = "Доброй ночи";
-  if($hour>=6 and $hour<12):
-    $welcome = "Доброе утро";
-  elseif ($hour>=12 and $hour<18):
-    $welcome = "Добрый день";
-  elseif ($hour>=18 and $hour<23):
-    $welcome = "Добрый вечер";
-  endif;
-
-//
-  $leftMenu = [
-    ['link' => 'Домой', 'href' => 'index.php'],
-    ['link' => 'О нас', 'href' => 'about.php'],
-    ['link' => 'Контакты', 'href' => 'contact.php'],
-    ['link' => 'Таблица умножения', 'href' => 'table.php'],
-    ['link' => 'Калькулятор', 'href' => 'calc.php']
-  ]; 
-  //инициализация массива
+  require "inc/lib.inc.php";
+  require "inc/data.inc.php";
+  include "inc/menu.inc.php";
 ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Сайт нашей школы</title>
+  <title><?php echo $title?></title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -84,7 +47,7 @@
   </div>
   <div id="nav">
     <!-- Навигация -->
-    <h2>Навигация по сайту</h2>
+    
     <!-- Меню -->
     <?php
     drawMenu($leftMenu);

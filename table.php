@@ -16,6 +16,16 @@ function drawTable($cols=10, $rows=10, $color="yellow"){
   echo "</table>";
 }
 
+//
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $cols = abs((int) $_POST['cols']);
+  $rows = abs((int) $_POST['rows']);
+  $color = trim(strip_tags($_POST['color']));
+}
+$cols = ($cols) ? $cols : 10;
+$rows = ($rows) ? $rows : 10;
+$color = ($color) ? $color : 'yellow';
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +51,7 @@ function drawTable($cols=10, $rows=10, $color="yellow"){
     <h1>Таблица умножения</h1>
     <!-- Заголовок -->
     <!-- Область основного контента -->
-    <form action=''>
+    <form action='<?= $_SERVER['REQUEST_URI']?>' method="POST" autocomplete="on /off">
       <label>Количество колонок: </label>
       <br />
       <input name='cols' type='text' value="" />
@@ -59,7 +69,7 @@ function drawTable($cols=10, $rows=10, $color="yellow"){
     </form>
     <!-- Таблица -->
     <?php 
-    drawTable(5, 5);
+    drawTable($cols, $rows, $color);
     ?>
     <!-- Таблица -->
     <!-- Область основного контента -->
